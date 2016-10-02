@@ -1,4 +1,4 @@
-Current version: 3 Stable
+Current version: 3.1 Stable
 
 A simple 3D Engine written in Java using LWJGL and OpenGL.
 
