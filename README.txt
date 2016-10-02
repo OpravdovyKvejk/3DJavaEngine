@@ -17,9 +17,9 @@ The engine currently allows for:
   -Applying a texture to a model through shaders.
   -Use of projection matrices
   -Per-Pixel Lighting
+    -Specular Lighting
 
 What should (and WILL) be added soon-ish:
-  -Specular Lighting
   -Heavy Optimization
     -Culling
     -New render code
