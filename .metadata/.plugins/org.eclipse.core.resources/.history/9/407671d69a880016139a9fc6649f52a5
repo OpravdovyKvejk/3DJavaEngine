@@ -1,0 +1,8 @@
+package renderEngine;
+
+public class MasterRenderer {
+	
+	private StaticShader shader = new StaticShader();
+	private Renderer renderer = new Renderer(shader);
+
+}

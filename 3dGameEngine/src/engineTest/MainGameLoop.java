@@ -1,5 +1,9 @@
 package engineTest;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -10,9 +14,8 @@ import models.RawModel;
 import models.TexturedModel;
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
+import renderEngine.MasterRenderer;
 import renderEngine.OBJLoader;
-import renderEngine.Renderer;
-import shaders.StaticShader;
 import textures.ModelTexture;
 
 public class MainGameLoop {
@@ -23,37 +26,47 @@ public class MainGameLoop {
 		DisplayManager.createDisplay();
 		
 		Loader loader = new Loader();
-		StaticShader shader = new StaticShader();
-		Renderer renderer = new Renderer(shader);
 		
 		RawModel model = OBJLoader.loadObjModel("dragon", loader);
+		TexturedModel dragonModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("texture0000")));
 		
-		TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("texture0000")));
-		ModelTexture texture = staticModel.getTexture();
+		ModelTexture texture = dragonModel.getTexture();
 		texture.setShineDamper(10);
 		texture.setReflectivity(1);
-		
-		Entity entity = new Entity(staticModel, new Vector3f(0,0,-25), 0, 0, 0, 1);
+
 		Light light = new Light(new Vector3f(0, -5, -15), new Vector3f(0, 1, 0));
 		
 		Camera camera = new Camera();
 		
+		List<Entity> allDragons = new ArrayList<Entity>();
+		Random random = new Random();
+		
+		for (int i = 0; i < 15; i++) { //A performance test.
+			float x = random.nextFloat() * 100 - 50;
+			float y = random.nextFloat() * 100 - 50;
+			float z = random.nextFloat() * 100 - 50;
+			allDragons.add(new Entity(dragonModel, new Vector3f(x, y, z), random.nextFloat() * 180f, 
+					random.nextFloat() *180f, 0f, 1f));
+		} //This will generate 15 dragon models, each consisting of 1 132 830 triangles.
+		//This means the renderer has to render 16 992 450 triangles every frame.
+		//= approx. 50 977 350 vertices.
+		
+		MasterRenderer renderer = new MasterRenderer();
+		
 		while(!Display.isCloseRequested()){ //If the window hasn't yet been ordered to close.
 			//Game Logic
-			entity.increaseRotation(0, 1, 0);
 			camera.move();
 			//Rendering
-			renderer.prepare(); //Prepares OpenGL for rendering.
-			shader.start();
-			shader.loadLight(light);
-			shader.loadViewMatrix(camera);
-			renderer.render(entity, shader);
-			shader.stop();
+			
+			for (Entity dragon : allDragons) {
+				renderer.processEntity(dragon);
+			}
+			renderer.render(light, camera);
 			DisplayManager.updateDisplay(); //Necessary for the user to see the changes.
 			
 		}
 		//Window is closed.
-		shader.cleanUp();
+		renderer.cleanUp();
 		loader.cleanUp();
 		DisplayManager.closeDisplay();
 

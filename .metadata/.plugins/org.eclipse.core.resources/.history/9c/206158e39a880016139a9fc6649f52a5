@@ -1,0 +1,12 @@
+package renderEngine;
+
+import shaders.StaticShader;
+
+public class MasterRenderer {
+	
+	private StaticShader shader = new StaticShader();
+	private Renderer renderer = new Renderer(shader);
+	
+	private Map<TexturedModel, List<Entity>> entities = new HashMap<TexturedModel, List<Entity>>();
+
+}

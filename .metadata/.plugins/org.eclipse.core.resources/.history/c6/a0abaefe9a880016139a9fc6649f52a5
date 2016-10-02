@@ -1,0 +1,22 @@
+package renderEngine;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import entities.Entity;
+import models.TexturedModel;
+import shaders.StaticShader;
+
+public class MasterRenderer {
+	
+	private StaticShader shader = new StaticShader();
+	private Renderer renderer = new Renderer(shader);
+	
+	private Map<TexturedModel, List<Entity>> entities = new HashMap<TexturedModel, List<Entity>>();
+	
+	public void cleanUp(){
+		shader.cleanUp();
+	}
+
+}
