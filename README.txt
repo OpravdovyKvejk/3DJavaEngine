@@ -1,4 +1,4 @@
-Current version: 3.15 Stable
+Current version: 3.2 Stable
 
 A simple 3D Engine written in Java using LWJGL and OpenGL.
 
@@ -9,21 +9,25 @@ watch the videos instead of copying others' code. Thanks.
 
 
 The engine currently allows for:
+1.0
   -Rendering a model from a list of vertices.
     -Transforming the model through the use of
     Transformation Matrices.
   -Use of GPU rendering
+2.0
   -Loading textures (in the PNG format).
   -Applying a texture to a model through shaders.
   -Use of projection matrices
+3.0
   -Per-Pixel Lighting
     -Specular Lighting
+3.15
   -Heavy Optimization
     -Culling
+3.2
+	-New render code
 
 What should (and WILL) be added soon-ish:
-  -Heavy Optimization
-    -New render code
   -Basic Terrain
   -Transparency and Fog
   -Multitexturing
