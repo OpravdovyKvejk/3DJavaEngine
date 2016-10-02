@@ -1,3 +1,5 @@
+Current version: 3 Stable
+
 A simple 3D Engine written in Java using LWJGL and OpenGL.
 
 This project has been created thanks to YouTube tutorials.
@@ -14,7 +16,7 @@ The engine currently allows for:
   -Loading textures (in the PNG format).
   -Applying a texture to a model through shaders.
   -Use of projection matrices
--Per-Pixel Lighting
+  -Per-Pixel Lighting
 
 What should (and WILL) be added soon-ish:
   -Specular Lighting

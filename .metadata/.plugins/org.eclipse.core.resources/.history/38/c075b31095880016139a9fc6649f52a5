@@ -38,12 +38,6 @@ public class StaticShader extends ShaderProgram{
 		location_lightPosition = super.getUniformLocation("lightPosition");
 		location_lightColor = super.getUniformLocation("lightColor");
 		location_shineDamper = super.getUniformLocation("shineDamper");
-		location_reflectivity = super.getUniformLocation("reflectivity");
-	}
-	
-	public void loadShineVars(float damper, float reflectivity){
-		super.loadFloat(location_shineDamper, damper);
-		super.loadFloat(location_reflectivity, reflectivity);
 	}
 	
 	public void loadTransformationMatrix(Matrix4f matrix){
