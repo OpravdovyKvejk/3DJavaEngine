@@ -1,4 +1,4 @@
-Current version: 3.1 Stable
+Current version: 3.15 Stable
 
 A simple 3D Engine written in Java using LWJGL and OpenGL.
 
@@ -18,10 +18,11 @@ The engine currently allows for:
   -Use of projection matrices
   -Per-Pixel Lighting
     -Specular Lighting
+  -Heavy Optimization
+    -Culling
 
 What should (and WILL) be added soon-ish:
   -Heavy Optimization
-    -Culling
     -New render code
   -Basic Terrain
   -Transparency and Fog
