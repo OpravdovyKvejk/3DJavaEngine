@@ -14,11 +14,13 @@ The engine currently allows for:
   -Loading textures (in the PNG format).
   -Applying a texture to a model through shaders.
   -Use of projection matrices
+-Per-Pixel Lighting
 
 What should (and WILL) be added soon-ish:
-  -Per-Pixel Lighting
-    -Specular Lighting
+  -Specular Lighting
   -Heavy Optimization
+    -Culling
+    -New render code
   -Basic Terrain
   -Transparency and Fog
   -Multitexturing

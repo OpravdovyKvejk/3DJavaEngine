@@ -1,0 +1,8 @@
+package entities;
+
+public class Light {
+	
+	private Vector3f position;
+	private Vector3f color;
+
+}
