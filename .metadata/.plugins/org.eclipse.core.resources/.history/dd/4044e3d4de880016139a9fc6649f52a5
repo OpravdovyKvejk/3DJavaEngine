@@ -1,0 +1,80 @@
+package engineTest;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import org.lwjgl.opengl.Display;
+import org.lwjgl.util.vector.Vector3f;
+
+import entities.Camera;
+import entities.Entity;
+import entities.Light;
+import models.RawModel;
+import models.TexturedModel;
+import renderEngine.DisplayManager;
+import renderEngine.Loader;
+import renderEngine.MasterRenderer;
+import renderEngine.OBJLoader;
+import terrains.Terrain;
+import textures.ModelTexture;
+
+public class MainGameLoop {
+
+	public static void main(String[] args) {
+		
+		
+		DisplayManager.createDisplay();
+		
+		Loader loader = new Loader();
+		
+		RawModel model = OBJLoader.loadObjModel("dragon", loader);
+		TexturedModel dragonModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("texture0000")));
+		
+		ModelTexture texture = dragonModel.getTexture();
+		texture.setShineDamper(10);
+		texture.setReflectivity(1);
+
+		Light light = new Light(new Vector3f(20000, 20000, -20000), new Vector3f(0, 0, 0));
+		
+		Terrain terrain1 = new Terrain(0, -1, 800, loader, new ModelTexture(loader.loadTexture("texture0003")));
+		Terrain terrain2 = new Terrain(1, -1, 800, loader, new ModelTexture(loader.loadTexture("texture0003")));
+		
+		Camera camera = new Camera();
+		
+		List<Entity> allDragons = new ArrayList<Entity>();
+		Random random = new Random();
+		
+		for (int i = 0; i < 15; i++) { //A performance test.
+			float x = random.nextFloat() * 100 - 50;
+			//float y = random.nextFloat() * 100 - 50;
+			float z = random.nextFloat() * 100 - 50;
+			allDragons.add(new Entity(dragonModel, new Vector3f(x, 5, z), 0f, 0f, 0f, 1f));
+		} //This will generate 15 dragon models, each consisting of 1 132 830 triangles.
+		//This means the renderer has to render 16 992 450 triangles every frame.
+		//= approx. 50 977 350 vertices.
+		
+		MasterRenderer renderer = new MasterRenderer();
+		
+		while(!Display.isCloseRequested()){ //If the window hasn't yet been ordered to close.
+			//Game Logic
+			camera.move();
+			//Rendering
+			
+			renderer.processTerrain(terrain2);
+			renderer.processTerrain(terrain1);
+			for (Entity dragon : allDragons) {
+				renderer.processEntity(dragon);
+			}
+			renderer.render(light, camera);
+			DisplayManager.updateDisplay(); //Necessary for the user to see the changes.
+			
+		}
+		//Window is closed.
+		renderer.cleanUp();
+		loader.cleanUp();
+		DisplayManager.closeDisplay();
+
+	}
+
+}

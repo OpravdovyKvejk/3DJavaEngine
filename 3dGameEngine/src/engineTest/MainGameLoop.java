@@ -16,6 +16,7 @@ import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import renderEngine.MasterRenderer;
 import renderEngine.OBJLoader;
+import terrains.Terrain;
 import textures.ModelTexture;
 
 public class MainGameLoop {
@@ -34,7 +35,10 @@ public class MainGameLoop {
 		texture.setShineDamper(10);
 		texture.setReflectivity(1);
 
-		Light light = new Light(new Vector3f(0, -5, -15), new Vector3f(0, 1, 0));
+		Light light = new Light(new Vector3f(20000, 20000, -20000), new Vector3f(1, 1, 1));
+		
+		Terrain terrain1 = new Terrain(0, -1, 800, loader, new ModelTexture(loader.loadTexture("texture0003")));
+		Terrain terrain2 = new Terrain(1, -1, 800, loader, new ModelTexture(loader.loadTexture("texture0003")));
 		
 		Camera camera = new Camera();
 		
@@ -43,10 +47,9 @@ public class MainGameLoop {
 		
 		for (int i = 0; i < 15; i++) { //A performance test.
 			float x = random.nextFloat() * 100 - 50;
-			float y = random.nextFloat() * 100 - 50;
+			//float y = random.nextFloat() * 100 - 50;
 			float z = random.nextFloat() * 100 - 50;
-			allDragons.add(new Entity(dragonModel, new Vector3f(x, y, z), random.nextFloat() * 180f, 
-					random.nextFloat() *180f, 0f, 1f));
+			allDragons.add(new Entity(dragonModel, new Vector3f(x, 5, z), 0f, 0f, 0f, 1f));
 		} //This will generate 15 dragon models, each consisting of 1 132 830 triangles.
 		//This means the renderer has to render 16 992 450 triangles every frame.
 		//= approx. 50 977 350 vertices.
@@ -58,6 +61,8 @@ public class MainGameLoop {
 			camera.move();
 			//Rendering
 			
+			renderer.processTerrain(terrain2);
+			renderer.processTerrain(terrain1);
 			for (Entity dragon : allDragons) {
 				renderer.processEntity(dragon);
 			}

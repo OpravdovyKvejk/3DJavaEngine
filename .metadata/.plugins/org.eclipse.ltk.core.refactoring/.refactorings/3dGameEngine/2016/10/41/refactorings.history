@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;renderEngine.Renderer&apos; to &apos;EntityRenderer&apos;&#x0A;- Original project: &apos;3dGameEngine&apos;&#x0A;- Original element: &apos;renderEngine.Renderer&apos;&#x0A;- Renamed element: &apos;renderEngine.EntityRenderer&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Renderer&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;renderEngine{Renderer.java[Renderer" matchStrategy="1" name="EntityRenderer" qualified="false" references="true" similarDeclarations="false" stamp="1475425569668" textual="false" version="1.0"/>
+</session>

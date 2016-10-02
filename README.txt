@@ -1,11 +1,13 @@
-Current version: 3.2 Stable
+Current version: 3.3 Stable
 
 A simple 3D Engine written in Java using LWJGL and OpenGL.
 
-This project has been created thanks to YouTube tutorials.
-I won't write them down though, because one might use this
-code to "easily learn" them. If you want to learn from them,
-watch the videos instead of copying others' code. Thanks.
+This project has been created thanks to YouTube tutorials
+and the official LWJGL documentation.
+I won't write the tutorials down though, because one might use
+this code to "easily learn" them. If you want to learn from
+them, watch the videos instead of copying and pasting others' 
+code. Thanks.
 
 
 The engine currently allows for:
@@ -20,47 +22,59 @@ The engine currently allows for:
   -Use of projection matrices
 3.0
   -Per-Pixel Lighting
-    -Specular Lighting
 3.15
+    -Specular Lighting
+3.2
   -Heavy Optimization
     -Culling
-3.2
 	-New render code
+3.3
+  -Basic Terrain
 
 What should (and WILL) be added soon-ish:
-  -Basic Terrain
+3.31
   -Transparency and Fog
+3.4
   -Multitexturing
   -Midmapping
   -Terrain Height Mapping
+3.41
   -Collision Detection
   -A Texture Atlas
   -GUI Rendering
+3.5
   -More Lights
     -Point Lights
   -Skybox
     -Day/Night
+3.51
   -Using the Mouse (in menus, etc.)
+3.6
   -Cel Shading
   -Normal Mapping
   -Font Rendering
+3.61
   -Distance Field Text Rendering
+3.7
   -Particles
     -Animated Particle Textures
+4.0
   -Instanced Rendering
   -Procedural Terrain
   -Shadow Mapping
+4.01
   -Percentage Closer Filtering
+4.1
   -Anti-aliasing and Anisotropic Filtering
   -Post Processing
   -Gaussian Blur
+4.2
   -Multisampled FBOs
   -Specular Maps
+4.21
   -Bloom
+4.3
   -Multiple Render Targets
   -Cube Map Reflections
+>4.3
   -More
-
-
-  PS. Yes, I DO realize how inefficient the rendering process
-  is so far - I will fix that soon-ish.
