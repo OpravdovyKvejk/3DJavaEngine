@@ -1,13 +1,10 @@
+[ARCHIVED AND NO LONGER UNDER ACTIVE DEVELOPMENT]
 Current version: 3.3 Stable
 
 A simple 3D Engine written in Java using LWJGL and OpenGL.
 
 This project has been created thanks to YouTube tutorials
 and the official LWJGL documentation.
-I won't write the tutorials down though, because one might use
-this code to "easily learn" them. If you want to learn from
-them, watch the videos instead of copying and pasting others' 
-code. Thanks.
 
 
 The engine currently allows for:
